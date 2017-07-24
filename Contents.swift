@@ -120,7 +120,7 @@ if let theName = middleName {
 //execute code depending on a boolean value from some expression
 //guard statement is used to exit early from a function if some condition is not met (protects code from running under improper conditions--hence the name guard)
 //func greetByMiddleName (fromFullName name: (first: String, middle: String?, last: String)) {
-//    guard let middleName = name.middle else {
+//     guard let middleName = name.middle, middleName.characters.count < 4 else {
 //        print ("Hey there!")
 //        return
 //    }
@@ -135,6 +135,27 @@ if let theName = middleName {
 // for example: function with no arguments and no return has type () -> ()
 // example: sortedEvenOddNumbers(_:) has type: ([Int]) -> ([Int],[Int]) AKA a function with one parameter takes an array of integers and returns a typle with two arrays containing integers
 // this becomes important/significant because you can use functions in arguments and returns of other functions
+
+//bronze challenge: refactor greetByMiddleName function to include additional condition of name being less than 4 characters (see above)
+
+// silver challenge
+func siftBeans(fromGroceryList list:[String]) -> (beans: [String], otherGroceries: [String]){
+  var beans = [String]()
+  var otherGroceries = [String]()
+  for groceries in list {
+    if groceries.hasSuffix("beans") {
+      beans.append(groceries)
+    } else {
+      otherGroceries.append(groceries)
+    }
+  }
+  return (beans, otherGroceries)
+}
+
+let result = siftBeans(fromGroceryList: ["green beans", "milk", "black beans", "pinto beans", "apples"])
+
+result.beans == ["green beans", "black beans", "pinto beans"]
+result.otherGroceries == ["milk", "apples"]
 
 
 
